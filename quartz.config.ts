@@ -21,32 +21,32 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Space Grotesk",
+        body: "Inter",
+        code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#faf8f5",
+          lightgray: "#e5e1d8",
+          gray: "#8f8a80",
+          darkgray: "#4e4a45",
+          dark: "#2b2a27",
+          secondary: "#28456b",
+          tertiary: "#5a7d63",
+          highlight: "rgba(40, 69, 107, 0.08)",
+          textHighlight: "#f3e9c988",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#11151c", // page bg — deep navy graphite
+          lightgray: "#232936", // borders, dividers
+          gray: "#7c8798", // muted text, graph edges
+          darkgray: "#c8cfda", // body text — soft white
+          dark: "#eef1f6", // headings
+          secondary: "#8fb4e3", // links, site title — calm blue
+          tertiary: "#9db8a1", // hovers — muted green
+          highlight: "rgba(143, 180, 227, 0.08)",
+          textHighlight: "#b3862d55", // warm amber
         },
       },
     },

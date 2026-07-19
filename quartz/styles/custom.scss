@@ -1,3 +1,88 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+// ——— Amir's Vault: calm, deep-navy editorial reading surface ———
+// Intelligence archive, not hacker terminal. Restraint over decoration.
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Cinematic-but-quiet headings: tight tracking, balanced wrapping
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+// Reading rhythm
+article {
+  line-height: 1.65;
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+// Page title: understated, confident
+.page-title {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+// Links: calm underline treatment instead of loud color shifts
+article a.internal {
+  text-decoration: none;
+  background-color: transparent;
+  border-bottom: 1px solid color-mix(in srgb, var(--secondary) 40%, transparent);
+  transition: border-color 0.2s ease-out;
+
+  &:hover {
+    border-bottom-color: var(--secondary);
+  }
+}
+
+// Soften containers — no harsh edges anywhere
+.popover > .popover-inner,
+.search > .search-container > .search-space > * {
+  border-radius: 6px;
+}
+
+// Code: quiet, recessed, never glowing
+article pre {
+  border-radius: 6px;
+  border: 1px solid var(--lightgray);
+}
+
+article code {
+  font-size: 0.85em;
+}
+
+// Dividers whisper
+hr {
+  height: 1px;
+  background: var(--lightgray);
+}
+
+// Graph pane: recede into the night surface
+.graph > .graph-outer {
+  border-radius: 6px;
+  border-color: var(--lightgray);
+}
+
+// Explorer: a touch more breathing room between entries
+.explorer {
+  #explorer-content ul li {
+    padding: 0.1rem 0;
+  }
+}
+
+// Respect reduced motion globally
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
