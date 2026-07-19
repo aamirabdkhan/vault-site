@@ -1,0 +1,3 @@
+# Private Diary
+
+Never publish.
