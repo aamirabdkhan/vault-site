@@ -1,0 +1,67 @@
+@use "../../styles/variables.scss" as *;
+
+footer.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 3rem;
+  padding: 0;
+  border-top: 1px solid var(--lightgray);
+  opacity: 1;
+
+  .status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem 1.5rem;
+    flex: 1 1 auto;
+
+    & + .status-item {
+      border-left: 1px solid var(--lightgray);
+    }
+  }
+
+  .status-label {
+    font-family: var(--codeFont);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .status-value {
+    font-family: var(--codeFont);
+    font-size: 0.75rem;
+    color: var(--darkgray);
+    text-decoration: none;
+
+    &.accent {
+      color: var(--tertiary);
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--tertiary);
+        margin-right: 0.45rem;
+        vertical-align: 1px;
+      }
+    }
+  }
+
+  a.status-value:hover {
+    color: var(--secondary);
+  }
+
+  @media all and ($mobile) {
+    .status-item {
+      flex: 1 1 40%;
+
+      &:nth-child(odd) {
+        border-left: none;
+      }
+    }
+  }
+}

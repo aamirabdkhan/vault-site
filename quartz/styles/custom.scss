@@ -1,15 +1,43 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
-// ——— Amir's Vault: calm, deep-navy editorial reading surface ———
-// Intelligence archive, not hacker terminal. Restraint over decoration.
+// ——— Amir's Vault: intelligence-archive board language ———
+// Near-black navy, panel chrome, mono microlabels, terminal accents.
+// Calm and considered — never neon, never glitchy.
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Cinematic-but-quiet headings: tight tracking, balanced wrapping
+// ——— Wordmark: mono, tracked, quiet-confident ———
+.page-title {
+  margin: 0;
+
+  a {
+    font-family: var(--codeFont);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--secondary);
+  }
+}
+
+// ——— Mono microlabels: every sidebar section header ———
+.explorer button.title-button h2,
+.toc button.toc-header h3,
+.backlinks h3,
+.graph h3 {
+  font-family: var(--codeFont);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+// ——— Headings: cinematic Space Grotesk, balanced ———
 h1,
 h2,
 h3 {
@@ -17,7 +45,13 @@ h3 {
   text-wrap: balance;
 }
 
-// Reading rhythm
+.article-title {
+  font-size: 2.1rem;
+  letter-spacing: -0.025em;
+  margin-top: 1.25rem;
+}
+
+// ——— Reading rhythm ———
 article {
   line-height: 1.65;
 
@@ -26,13 +60,29 @@ article {
   }
 }
 
-// Page title: understated, confident
-.page-title {
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
+// ——— Meta line: terminal readout ———
+.content-meta {
+  font-family: var(--codeFont);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
 }
 
-// Links: calm underline treatment instead of loud color shifts
+// ——— Breadcrumbs: path-like, mono ———
+.breadcrumb-container {
+  font-family: var(--codeFont);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  gap: 0.4rem;
+
+  .breadcrumb-element p {
+    color: var(--gray);
+  }
+}
+
+// ——— Links: calm underline treatment ———
 article a.internal {
   text-decoration: none;
   background-color: transparent;
@@ -44,42 +94,129 @@ article a.internal {
   }
 }
 
-// Soften containers — no harsh edges anywhere
-.popover > .popover-inner,
-.search > .search-container > .search-space > * {
-  border-radius: 6px;
+// ——— Panel chrome: right-rail modules read as instruments ———
+@mixin panel-frame {
+  position: relative;
+  border: 1px solid var(--lightgray);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  background: color-mix(in srgb, var(--light) 92%, var(--dark) 8%);
+
+  // corner brackets, top-left + bottom-right — the board's framing tick
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid var(--gray);
+    border-left: 1px solid var(--gray);
+  }
+
+  &::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid var(--gray);
+    border-right: 1px solid var(--gray);
+  }
 }
 
-// Code: quiet, recessed, never glowing
+.right {
+  .graph,
+  .toc,
+  .backlinks {
+    @include panel-frame;
+  }
+
+  .graph > .graph-outer {
+    border: none;
+    background: transparent;
+  }
+}
+
+// ——— Search: instrument styling ———
+.search {
+  & > .search-button {
+    border: 1px solid var(--lightgray);
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--light) 92%, var(--dark) 8%);
+
+    & > p {
+      font-family: var(--codeFont);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// ——— Code: terminal panels ———
 article pre {
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1px solid var(--lightgray);
+  background: color-mix(in srgb, var(--light) 94%, black 6%) !important;
+
+  & > code {
+    font-size: 0.8rem;
+  }
 }
 
 article code {
   font-size: 0.85em;
+  border-radius: 3px;
 }
 
-// Dividers whisper
-hr {
-  height: 1px;
-  background: var(--lightgray);
+// ——— Blockquote: the board's quote block (full frame, no side-stripe) ———
+article blockquote:not([class]) {
+  border: 1px solid var(--lightgray);
+  border-left: 1px solid var(--lightgray);
+  border-radius: 4px;
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.4rem;
+  background: color-mix(in srgb, var(--light) 92%, var(--dark) 8%);
+
+  p {
+    font-family: var(--codeFont);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--darkgray);
+  }
 }
 
-// Graph pane: recede into the night surface
-.graph > .graph-outer {
-  border-radius: 6px;
-  border-color: var(--lightgray);
-}
-
-// Explorer: a touch more breathing room between entries
+// ——— Explorer: breathing room ———
 .explorer {
   #explorer-content ul li {
     padding: 0.1rem 0;
   }
 }
 
-// Respect reduced motion globally
+// mobile explorer panel: don't exceed the viewport (offset + 100% = overflow)
+@media all and ($mobile) {
+  .explorer .explorer-content {
+    max-width: calc(100vw - 16px);
+    box-sizing: border-box;
+  }
+}
+
+// ——— Dividers whisper ———
+hr {
+  height: 1px;
+  background: var(--lightgray);
+}
+
+// ——— Popovers match panels ———
+.popover > .popover-inner {
+  border-radius: 4px;
+  border-color: var(--lightgray);
+}
+
+// ——— Respect reduced motion ———
 @media (prefers-reduced-motion: reduce) {
   * {
     transition-duration: 0.01ms !important;

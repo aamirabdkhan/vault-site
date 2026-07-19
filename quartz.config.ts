@@ -38,14 +38,14 @@ const config: QuartzConfig = {
           textHighlight: "#f3e9c988",
         },
         darkMode: {
-          light: "#11151c", // page bg — deep navy graphite
-          lightgray: "#232936", // borders, dividers
+          light: "#0a0e16", // page bg — board near-black navy
+          lightgray: "#1a2130", // borders, dividers, panel frames
           gray: "#7c8798", // muted text, graph edges
           darkgray: "#c8cfda", // body text — soft white
           dark: "#eef1f6", // headings
-          secondary: "#8fb4e3", // links, site title — calm blue
-          tertiary: "#9db8a1", // hovers — muted green
-          highlight: "rgba(143, 180, 227, 0.08)",
+          secondary: "#82aee8", // links, wordmark — board blue
+          tertiary: "#6fbf8f", // status green, hovers
+          highlight: "rgba(130, 174, 232, 0.08)",
           textHighlight: "#b3862d55", // warm amber
         },
       },
