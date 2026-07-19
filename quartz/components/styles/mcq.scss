@@ -7,6 +7,21 @@
   margin: 1.5rem 0;
 }
 
+.mcq-score {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+}
+
 .mcq {
   .mcq-q {
     margin: 0 0 0.75rem;
