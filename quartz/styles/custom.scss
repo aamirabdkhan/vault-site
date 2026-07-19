@@ -1,7 +1,7 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
-// ——— Amir's Vault: intelligence-archive board language ———
+// ——— Aamir's Vault: intelligence-archive board language ———
 // Near-black navy, panel chrome, mono microlabels, terminal accents.
 // Calm and considered — never neon, never glitchy.
 
@@ -214,6 +214,54 @@ hr {
 .popover > .popover-inner {
   border-radius: 4px;
   border-color: var(--lightgray);
+}
+
+// ——— Sidebar: SECTIONS nav with uniform icons + active highlight ———
+@mixin sidebar-icon($svg) {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 0.5rem;
+  vertical-align: -2px;
+  background-color: currentColor;
+  opacity: 0.7;
+  -webkit-mask: #{$svg} center / contain no-repeat;
+  mask: #{$svg} center / contain no-repeat;
+}
+
+$file-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3C/svg%3E");
+$folder-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z'/%3E%3C/svg%3E");
+
+.explorer-content {
+  // doc glyph on every note
+  li > a::before {
+    @include sidebar-icon($file-svg);
+  }
+  // folder glyph on every folder label
+  .folder-title::before {
+    @include sidebar-icon($folder-svg);
+  }
+
+  // active note — filled panel + accent, no side-stripe
+  // `ul` matches Quartz's own specificity so our blue wins over its green
+  ul li > a.active {
+    background: var(--highlight);
+    border-radius: 4px;
+    padding: 0.05rem 0.35rem;
+    color: var(--secondary);
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-left: 0.4rem;
+      border-radius: 50%;
+      background: var(--secondary);
+      vertical-align: 1px;
+    }
+  }
 }
 
 // ——— Respect reduced motion ———

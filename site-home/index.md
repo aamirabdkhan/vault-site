@@ -1,5 +1,5 @@
 ---
-title: Amir's Vault
+title: Aamir's Vault
 ---
 
 Cybersecurity notes, published straight from my personal Obsidian vault — CTF writeups, networking, cryptography, Linux, and whatever I'm currently learning.
