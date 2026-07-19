@@ -4,6 +4,7 @@ import path from "node:path"
 import { loadManifest, resolvePublishState } from "./lib/resolve.mjs"
 import { walkVault, isEligibleNote, isAttachment, findEmbeds } from "./lib/scan.mjs"
 import { neutralizeLinks } from "./lib/links.mjs"
+import { transformMcq } from "./lib/mcq.mjs"
 
 function arg(name, fallback) {
   const i = process.argv.indexOf(`--${name}`)
@@ -72,7 +73,8 @@ fs.mkdirSync(out, { recursive: true })
 
 let neutralized = 0
 for (const note of notes) {
-  const md = fs.readFileSync(path.join(vault, note), "utf8")
+  const raw = fs.readFileSync(path.join(vault, note), "utf8")
+  const md = transformMcq(raw) ?? raw
   const { text, count } = neutralizeLinks(md, isTargetPublished)
   neutralized += count
   const dest = path.join(out, note)

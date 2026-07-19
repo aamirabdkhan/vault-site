@@ -1,0 +1,76 @@
+@use "../../styles/variables.scss" as *;
+
+.mcq-quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin: 1.5rem 0;
+}
+
+.mcq {
+  .mcq-q {
+    margin: 0 0 0.75rem;
+    font-weight: $semiBoldWeight;
+    color: var(--dark);
+  }
+
+  .mcq-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mcq-opt {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: var(--darkgray);
+    background: color-mix(in srgb, var(--light) 92%, var(--dark) 8%);
+    border: 1px solid var(--lightgray);
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    transition: border-color 0.15s ease-out, background 0.15s ease-out;
+  }
+
+  button.mcq-opt {
+    cursor: pointer;
+  }
+
+  button.mcq-opt:hover {
+    border-color: var(--secondary);
+  }
+
+  .mcq-opt.mcq-static {
+    opacity: 0.65;
+  }
+
+  // revealed states
+  .mcq-opt.correct {
+    border-color: var(--tertiary);
+    background: color-mix(in srgb, var(--tertiary) 14%, transparent);
+    color: var(--dark);
+  }
+
+  .mcq-opt.wrong {
+    border-color: #d97b6c;
+    background: color-mix(in srgb, #d97b6c 14%, transparent);
+    color: var(--dark);
+  }
+
+  &.answered button.mcq-opt {
+    cursor: default;
+  }
+  &.answered button.mcq-opt:hover:not(.correct):not(.wrong) {
+    border-color: var(--lightgray);
+  }
+
+  .mcq-explain {
+    margin: 0.6rem 0 0;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--lightgray);
+    font-family: var(--codeFont);
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+}
