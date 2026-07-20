@@ -34,7 +34,7 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({ title: "Sections" }),
-    Component.Quote(),
+    Component.DesktopOnly(Component.Quote()),
   ],
   right: [
     Component.Graph(),
@@ -59,7 +59,7 @@ export const defaultListPageLayout: PageLayout = {
       ],
     }),
     Component.Explorer({ title: "Sections" }),
-    Component.Quote(),
+    Component.DesktopOnly(Component.Quote()),
   ],
   right: [],
 }
