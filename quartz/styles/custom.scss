@@ -202,6 +202,14 @@ article blockquote:not([class]) {
     max-width: calc(100vw - 16px);
     box-sizing: border-box;
   }
+
+  // ponytail: Quartz's grid columns overhang the padded body ~10px on phones
+  // (min/max-width:100% resolves past the content box). Clip the empty overhang
+  // at the page wrapper — kills the sideways scroll; text wraps before the edge.
+  // Root fix would mean rewriting Quartz's mobile grid; not worth it.
+  .page {
+    overflow-x: clip;
+  }
 }
 
 // ——— Dividers whisper ———
