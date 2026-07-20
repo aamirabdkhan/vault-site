@@ -86,8 +86,8 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
-      Plugin.CustomOgImages(),
+      // Static site-wide social card (quartz/static/og-image.png, see scripts/gen-og.mjs)
+      // instead of per-page generated images.
     ],
   },
 }
